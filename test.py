@@ -1,8 +1,7 @@
 import KernelConvolve as convolve
 import numpy as np
+import cv2
 
-x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-identity = np.array([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
-output = convolve.convolve(x, "int", identity, False)
-
-print(output)
+src = cv2.imread("demos/images/bee.jpg")
+cv2.imshow("bee", src)
+cv2.waitKey(0)
