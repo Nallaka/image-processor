@@ -2,17 +2,10 @@ import numpy as np
 import cv2
 
 
-def convolve(source=None, data_type=None, kernel=None, blur=None):
-    if source is None:
-        raise Exception("Error: Source does not exist")
-
-    if kernel is None:
-        raise Exception("Error: Kernel does not exist")
+def convolve(source=None, data_type=None, kernel=None):
 
     src_height, src_width = np.shape(source)
     kernel_height, kernel_width = np.shape(kernel)
-
-    kernel_size = kernel_height * kernel_width
 
     img_padd = (kernel_width - 1) // 2
 
@@ -26,9 +19,6 @@ def convolve(source=None, data_type=None, kernel=None, blur=None):
 
             calc_roi = src_roi * kernel
 
-            if blur:
-                output[y - img_padd, x - img_padd] = (calc_roi.sum())/kernel_size
-            else:
-                output[y - img_padd, x - img_padd] = (calc_roi.sum())
+            output[y - img_padd, x - img_padd] = (calc_roi.sum())
 
     return output
