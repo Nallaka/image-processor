@@ -25,7 +25,6 @@ def convolve(source=None, data_type=None, kernel=None, blur=None):
             src_roi = src_with_padd[y - img_padd: y + img_padd + 1, x - img_padd:x + img_padd + 1]
 
             calc_roi = src_roi * kernel
-            print(calc_roi.sum())
 
             if blur:
                 output[y - img_padd, x - img_padd] = (calc_roi.sum())/kernel_size
